@@ -60,7 +60,15 @@ async function run() {
         // todo patch
         app.patch('/orders/:id', async (req, res) =>{
             const id = req.params.id;
+            const status = req.body.status;
             const query = { _id: ObjectId(id)};
+            const updateData = {
+                $set:{
+                    status: status
+                }
+            }
+            const result = await orderCollection.updateOne(query, updateData);
+            
         })
 
 
