@@ -68,7 +68,7 @@ async function run() {
                 }
             }
             const result = await orderCollection.updateOne(query, updateData);
-            
+            res.send(result);
         })
 
 
