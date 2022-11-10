@@ -40,7 +40,12 @@ async function run() {
         // todo orders api "post"
 
         app.get('/orders', async (req, res) =>{
-            const query = {};
+            let query = {};
+            if (req.query.email) {
+                query = {
+                    email: req.query.email
+                }
+            }
             const cursor = orderCollection.find(query);
             const orders = await cursor.toArray();
             res.send(orders);
@@ -50,7 +55,8 @@ async function run() {
             const order = req.body;
             const result = await orderCollection.insertOne(order);
             res.send(result);
-        })
+        });
+        // todo delete
 
     }
     finally {
