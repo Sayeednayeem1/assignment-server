@@ -58,7 +58,11 @@ async function run() {
         });
 
         // todo patch
-        
+        app.patch('/orders/:id', async (req, res) =>{
+            const id = req.params.id;
+            const query = { _id: ObjectId(id)};
+        })
+
 
         // todo delete
         app.delete('/orders/:id', async (req, res) =>{
